@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: fr.uni.institute.library.web.IndexITestCase
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.193 sec <<< FAILURE! - in fr.uni.institute.library.web.IndexITestCase
+test(fr.uni.institute.library.web.IndexITestCase)  Time elapsed: 0.138 sec  <<< ERROR!
+com.meterware.httpunit.HttpNotFoundException: Error on HTTP request: 404 Introuvable [http://localhost:8080/bibliotheque-web]
+	at fr.uni.institute.library.web.IndexITestCase.test(IndexITestCase.java:33)
+
