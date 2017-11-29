@@ -1,108 +1,78 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>fr.uni.institute.library</groupId>
-  <artifactId>bibliotheque-parent</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
-  <name>bibliotheque-parent</name>
-  <description>Le projet parent qui assure l'heritage de la conf pour l'ensemble des sous modules</description>
-   
-  
-  <reporting>   
-  <plugins>  
-  			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>cobertura-maven-plugin</artifactId>
-				<version>2.7</version>
-			</plugin>  
-  </plugins>
-  
-  
-  </reporting>
-  
-  
-  
-  
-   <dependencies>  
-  <!-- https://mvnrepository.com/artifact/log4j/log4j -->
-	<dependency>
-	    <groupId>log4j</groupId>
-	    <artifactId>log4j</artifactId>
-	    <version>1.2.16</version>
-	</dependency>  
+package fr.uni.institute.library.dao;
+
+import static org.junit.Assert.*;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.Collection;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import fr.uni.institute.library.business.inventory.Category;
+import fr.uni.institute.library.dao.CategoryDao;
+import fr.uni.institute.library.dao.DaoException;
+import fr.uni.institute.library.dao.jdbc.CategoryDaoJdbc;
+
+public class CategoryDaoTestCase {
 	
-	<!-- https://mvnrepository.com/artifact/junit/junit -->
-	<dependency>
-	    <groupId>junit</groupId>
-	    <artifactId>junit</artifactId>
-	    <version>4.12</version>
-	    <scope>test</scope>
-	</dependency>
-	
+	private static long resultatAttendu;
+	private static CategoryDao categoryDao;
+	private static Connection connection;
+	private static Category categoryAttendu;
+
+	@Before
+	public void setUp() throws Exception {
+		System.out.println("Définition des conditions initiales");
+		resultatAttendu = 11;
+		System.out.println("Initialisation de la connexion ");
+		Class.forName("com.mysql.jdbc.Driver");
+	    connection = DriverManager.getConnection("jdbc:mysql://192.168.25.100:3306/uni_library_db", "root", "admin");
+		categoryDao = new CategoryDaoJdbc(connection);
+		categoryAttendu = new Category(1, "Music");
 		
-	  
-  </dependencies>
-  
-  
-  
-  
-   <modules>
-   	<module>bibliotheque-modele</module>
-   	<module>bibliotheque-dao-api</module>
-   	<module>bibliotheque-dao-impl</module>
-   	<module>bibliotheque-service-api</module>
-   	<module>bibliotheque-service-impl</module>
-    <module>bibliotheque-web</module>
-  </modules>
-  
-  
-  <build>
-	  <plugins>
-	  	<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.19.1</version>
-				<configuration>
-					<parallel>methods</parallel>
-					<threadCount>10</threadCount>
-					<excludes>
-						<exclude>**/*ITestCase*</exclude>
-					</excludes>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<version>2.19.1</version>
-				<executions>
-					<execution>
-						<id>integration-test</id>
-						<goals>
-							<goal>integration-test</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>verify</id>
-						<goals>
-							<goal>verify</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<includes>
-						<include>**/*ITestCase*</include>
-					</includes>
-				</configuration>
-</plugin>
-	  
-	  </plugins>
-  
-  
-  
-  
-  
-  </build>
-  
-  
-</project>
+	}
+	
+	
+	
+
+	@After
+	public void tearDown() throws Exception {
+		System.out.println("Libé©ration des resources");
+		categoryDao = null;
+		connection = null;
+	}
+
+	
+	
+	
+	
+	@Test
+	public void testResearchAllCategories() {
+		System.out.println("Réccupération de la liste des categories ");
+		try {
+			Collection<Category> liste = categoryDao.researchAllCategories();
+			assertNotNull(liste);
+			assertEquals(resultatAttendu, liste.size(),0);
+		} catch (DaoException e) {
+			fail(e.getMessage());
+		} 
+	}
+	
+	
+	
+	@Test
+	public void testResearchCategoryById() {
+		System.out.println("Réccupération d'une categorie ");
+		try {
+			Category categorieCalculee = categoryDao.researchCategoryById(categoryAttendu.getId());
+			assertNotNull(categorieCalculee);
+			assertEquals(categoryAttendu.getName(), categorieCalculee.getName() );
+		} catch (DaoException e) {
+			fail(e.getMessage());
+		}
+		
+	}
+
+}
