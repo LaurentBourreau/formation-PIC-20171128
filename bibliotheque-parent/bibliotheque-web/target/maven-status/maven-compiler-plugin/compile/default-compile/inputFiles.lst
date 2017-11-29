@@ -3,6 +3,7 @@ C:\formation\workspace\bibliotheque-parent\bibliotheque-web\src\main\java\fr\uni
 C:\formation\workspace\bibliotheque-parent\bibliotheque-web\src\main\java\fr\uni\institute\library\web\ServletSearchTitles.java
 C:\formation\workspace\bibliotheque-parent\bibliotheque-web\src\main\java\fr\uni\institute\library\web\TitleModifyPrepareViewDispatcher.java
 C:\formation\workspace\bibliotheque-parent\bibliotheque-web\src\main\java\fr\uni\institute\library\web\ServletTitleDelete.java
+C:\formation\workspace\bibliotheque-parent\bibliotheque-web\src\main\java\fr\uni\institute\library\web\package-info.java
 C:\formation\workspace\bibliotheque-parent\bibliotheque-web\src\main\java\fr\uni\institute\library\web\ServletCategorySave.java
 C:\formation\workspace\bibliotheque-parent\bibliotheque-web\src\main\java\fr\uni\institute\library\web\TitleViewDispatcher.java
 C:\formation\workspace\bibliotheque-parent\bibliotheque-web\src\main\java\fr\uni\institute\library\web\ServletInventory.java
@@ -11,6 +12,7 @@ C:\formation\workspace\bibliotheque-parent\bibliotheque-web\src\main\java\fr\uni
 C:\formation\workspace\bibliotheque-parent\bibliotheque-web\src\main\java\fr\uni\institute\library\web\ServletBookSave.java
 C:\formation\workspace\bibliotheque-parent\bibliotheque-web\src\main\java\fr\uni\institute\library\web\AudioRecordDTO.java
 C:\formation\workspace\bibliotheque-parent\bibliotheque-web\src\main\java\fr\uni\institute\library\web\TitleDTO.java
+C:\formation\workspace\bibliotheque-parent\bibliotheque-web\src\main\java\fr\uni\institute\library\web\tag\package-info.java
 C:\formation\workspace\bibliotheque-parent\bibliotheque-web\src\main\java\fr\uni\institute\library\web\BookDTO.java
 C:\formation\workspace\bibliotheque-parent\bibliotheque-web\src\main\java\fr\uni\institute\library\web\ResearchTitlesDTO.java
 C:\formation\workspace\bibliotheque-parent\bibliotheque-web\src\main\java\fr\uni\institute\library\web\ServletTitleDetail.java

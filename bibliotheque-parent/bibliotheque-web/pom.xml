@@ -44,19 +44,13 @@
 	    <version>1.2</version>
 	</dependency>
 
-	<!-- https://mvnrepository.com/artifact/javax/javaee-web-api
-	pour le war
-	
-	 -->
+	<!-- https://mvnrepository.com/artifact/javax/javaee-web-api -->
 	<dependency>
 	    <groupId>javax</groupId>
 	    <artifactId>javaee-web-api</artifactId>
 	    <version>7.0</version>
 	    <scope>provided</scope>
 	</dependency>	
-  	
-  	
-  	<!--  tests interface web -->
   	<dependency>
 	    <groupId>httpunit</groupId>
 	    <artifactId>httpunit</artifactId>
@@ -70,8 +64,6 @@
 	    <version>1.7R2</version>
 	     <scope>test</scope>
 	</dependency>
-  	
-  	
   	
   </dependencies>
 </project>
