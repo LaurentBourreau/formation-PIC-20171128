@@ -23,6 +23,7 @@
 					<excludes>
 						<exclude>**/*ITestCase*</exclude>
 					</excludes>
+					
 				</configuration>
 			</plugin>
    
