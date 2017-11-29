@@ -42,7 +42,7 @@ public class CategoryDaoTestCase {
 		connection = null;
 	}
 
-	@Test(timeout=5)
+	@Test
 	public void testResearchAllCategories() {
 		System.out.println("Réccupération de la liste des categories ");
 		try {
